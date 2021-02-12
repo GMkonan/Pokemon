@@ -1,0 +1,21 @@
+.name {
+    text-align: center;
+}
+.abilities {
+    text-align: center;
+}
+.pokemon {
+    background-color: rgb(77, 144, 77); 
+    border-radius: 50%;
+    width: 120px; 
+    height: 120px; 
+    margin: 0 auto;
+}
+.numero {
+    margin: 0 auto;
+}
+.pokemon-container {
+    width: 14rem; 
+    margin: 0 auto;
+    border-radius: 10%;
+}
