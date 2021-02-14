@@ -1,0 +1,13 @@
+body{
+    margin-top: 50px;
+    background: rgb(198,27,27);
+    background: radial-gradient(circle, rgb(163, 11, 11) 0%, rgb(216, 31, 31) 26%, rgb(253, 61, 61) 100%);
+}
+.card {
+    border-radius: 5%;
+    width: 27rem;
+    height: 24rem;
+}
+.btn {
+    background-color: red;
+}
