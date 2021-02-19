@@ -1,13 +1,41 @@
+let objetoEmail = document.getElementById("email")
+let objetoSenha = document.getElementById("senha")
 let validacaoEmail = document.getElementById("validacaoEmail")
 let validacaoSenha = document.getElementById("validacaoSenha")
 
 const logar = () => {
+
+    let email = objetoEmail.value
+    let password = objetoSenha.value
+
+    let usuario = {email: email, password: password}
+
+    usuario = JSON.stringify(usuario)
+
+    $.ajax({
+        url: "http://escolarapp2.herokuapp.com/account/login/",
+        contentType: 'application/json',
+        cache: false,
+        method: 'POST',
+        dataType: 'json',
+        data: usuario,
+        success: function(objetoToken){
+            console.log(objetoToken)
+
+            window.localStorage.setItem("Token", objetoToken.key)
+
+            window.location.href ="../index.html"
+
+        },
+        error: function (error){
+            console.log(error)
+        }
+    });
+
+    /*
     let email = document.getElementById("email").value
     let senha = document.getElementById("senha").value
     let confirmarSenha = document.getElementById("confirmarSenha").value
-    console.log(email)
-    console.log(senha)
-    console.log(confirmarSenha)
 
     let validacoes = [validarEmail(email),
     validarSenha(senha, confirmarSenha)]
@@ -17,6 +45,7 @@ const logar = () => {
     } else {
         alert("seu login deu certo!")
     }
+    */
 }
 
 const validarEmail = (email) => {
@@ -31,6 +60,7 @@ const validarEmail = (email) => {
     }
 }
 
+/*
 const validarSenha = (senha, confirmarSenha) => {
     if (senha != "" && confirmarSenha != "") {
         if (senha == confirmarSenha) {
@@ -46,3 +76,4 @@ const validarSenha = (senha, confirmarSenha) => {
         return false;
     }
 }
+*/

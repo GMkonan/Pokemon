@@ -6,10 +6,13 @@ body{
 .card {
     border-radius: 5%;
     width: 27rem;
-    height: 24rem;
+    height: 19rem;
 }
 .btn {
     background-color: red;
+}
+.btn:hover {
+    background-color: rgb(231, 33, 33);
 }
 .registro {
     margin-top: 20px;

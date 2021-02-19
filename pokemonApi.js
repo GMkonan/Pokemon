@@ -19,6 +19,9 @@ const createPokeCard = (data) => {
                 `
     let pokemonCard = document.createElement("div")
     pokemonCard.classList.add("card")
+    pokemonCard.classList.add("btn")
+    pokemonCard.setAttribute("data-toggle", "modal")
+    pokemonCard.setAttribute("data-target", "#exampleModal")
     pokemonCard.innerHTML = card;
     document.getElementById("pokemon-container").appendChild(pokemonCard)
 }
@@ -31,7 +34,7 @@ const showPokemons = async () => {
 showPokemons()
 
 function myFunction() {
-    var input, filter, cards, cardContainer, h5, title, i;
+    var input, filter, cards, title, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     //cardContainer = document.getElementById("myItems");
