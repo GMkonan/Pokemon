@@ -33,8 +33,8 @@ const createPokeCard = (data) => {
 const createModal = (data) => {
     let modal = `
     <div class="modal fade" id="${data.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" >
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">${data.name}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,17 +48,17 @@ const createModal = (data) => {
         <div style="display:inline-block;">
         <p><b>Nome:</b> ${data.name} </p>
         <p><b>Habilidades:</b> ${data.abilities.map(pokemon => pokemon.ability.name)} </p>
+        <p><b>Tipos:</b> ${data.types.map(pokemon => pokemon.type.name)} </p>
+        <p><b>Altura:</b> ${data.height} </p>
+        <p><b>Peso:</b> ${data.weight} </p>
         </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
   </div>  
 </div>
     `
+    
     let pokemonModal = document.createElement("div")
     pokemonModal.innerHTML = modal;
     document.getElementById("pokemon-container").appendChild(pokemonModal)
@@ -71,7 +71,10 @@ const showPokemons = async () => {
 }
 showPokemons()
 
-function myFunction() {
+
+
+//helper functions
+const searchBar = () => {
     var input, filter, cards, title, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
