@@ -1,3 +1,37 @@
+const cadastrar = () => {
+    let email = document.getElementById("email")
+    let nome = document.getElementById("nome")
+    let senha = document.getElementById("senha")
+
+    criarUsuario(senha.value, email.value)
+}
+
+const criarUsuario = (senha, email) => {
+    let usuario = {password: senha, email: email}
+
+    let usuarioJson = JSON.stringify(usuario)
+
+    $.ajax({
+        url: "http://escolarapp2.herokuapp.com/account/register/",
+        contentType: 'application/json',
+        cache: false,
+        method: 'POST',
+        dataType: 'json',
+        data: usuarioJson,
+        success: function(resposta){
+            console.log(resposta)
+
+            window.location.href = "../login/login.html"
+
+        },
+        error: function (error){
+            console.log(error)
+        }
+    });
+}
+
+
+/*
 let nomeValida = document.getElementById("validacaoNome")
 let idadeValida = document.getElementById("validacaoIdade")
 let naturalidadeValida = document.getElementById("validacaoNaturalidade")
@@ -59,3 +93,4 @@ const validarAntecedentes = (antecedentes) => {
     return true;
 }
 
+*/

@@ -24,7 +24,7 @@
         <p></p>
     </div>
       <div class="d-flex justify-content-center">
-      <div class="card">
+      <div class="card" style="height: 340px;">
 
         <div class="card-body">
           <form>
@@ -33,20 +33,15 @@
               <input type="text" class="form-control" id="nome">
               <div id="validacaoNome" class="text-danger text-cen"></div>
             </div>
-            <div class="mb-3">
-              <label for="idade" class="form-label">Idade</label>
-              <input type="number" class="form-control" id="idade">
-              <div id="validacaoIdade" class="text-danger text-cen"></div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
+            <div id="validacaoEmail" class="text-danger text-cen"></div>
           </div>
           <div class="mb-3">
-            <label for="naturalidade" class="form-label">Naturalidade</label>
-            <input type="text" class="form-control" id="naturalidade">
-            <div id="validacaoNaturalidade" class="text-danger text-cen"></div>
-          </div>
-          <div class="mb-3">
-            <input type="checkbox" id="antecedentes">
-            <label for="antecedentes" class="form-label">Possui antecedentes criminais?</label>
-            <div id="validacaoAntecedentes" class="text-danger text-cen"></div>
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha">
+            <div id="validacaoSenha" class="text-danger text-cen"></div>
           </div>
           </form>
           
@@ -61,7 +56,7 @@
     </div>
   </div>
   </div>
-
+  <script src="../jquery-3.5.1.min.js"></script>
   <script src="validacoes.js" async defer></script>
 </body>
 

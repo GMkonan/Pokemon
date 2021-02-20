@@ -24,7 +24,13 @@ const logar = () => {
 
             window.localStorage.setItem("Token", objetoToken.key)
 
-            window.location.href ="../index.html"
+            let token = window.localStorage.getItem("Token")
+
+            if (token != null) {
+                window.location.href = "../index.html"
+            }
+
+            //window.location.href ="../index.html"
 
         },
         error: function (error){

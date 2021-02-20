@@ -1,4 +1,4 @@
-const NumberOfPokemons = 150;
+const NumberOfPokemons = 151
 
 const getPokemon = async (id) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
