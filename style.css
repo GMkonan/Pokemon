@@ -35,6 +35,12 @@ body {
     justify-content: space-between;
     max-width: 1200px;
 }
+#myInput {
+    border-radius: 5%;
+    width: 300px;
+    height: 40px;
+}
+
 /*css to make modal appear in center */
 .modal {
     text-align: center;
