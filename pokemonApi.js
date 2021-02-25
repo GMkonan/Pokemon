@@ -2,6 +2,7 @@ const NumberOfPokemons = 151
 
 const getPokemon = async (id) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    console.log(response)
     let data = await response.json()
     createPokeCard(data);
     createModal(data);
@@ -65,7 +66,7 @@ const createModal = (data) => {
 }
 
 const showPokemons = async () => {
-    for (let i = 1; i <= NumberOfPokemons; i++) {
+    for (let i = 3; i <= NumberOfPokemons; i++) {
         await getPokemon(i)
     }
 }
