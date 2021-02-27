@@ -25,6 +25,27 @@ body {
     margin-bottom: 2rem;
     border-radius: 10%;
 }
+
+.card:hover {
+    animation: bounce 0.5s linear
+}
+
+@keyframes bounce {
+    20% {
+        transform: translateY(-6px);
+    }
+    40% {
+        transform: translateY(0px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+    80% {
+        transform: translateY(-0px);
+    }
+}
+
+
 .numero {
     margin: 0 auto;
 }

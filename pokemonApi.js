@@ -1,38 +1,54 @@
-const NumberOfPokemons = 151
+const pokedex = document.getElementById("pokemon-container")
+const cachedPokemon = {};
 
-const getPokemon = async (id) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    console.log(response)
-    let data = await response.json()
-    createPokeCard(data);
-    createModal(data);
-    //return data;
-    /*.then(res => res.json())
-        .then(data => createPokeCard(data))*/
+const getPokemon = async () => {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`)
+    const data = await response.json()
+    const pokemon = data.results.map((data, index) => ({
+        name: data.name,
+        id: index + 1,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
+            1}.png`,
+    }));
+    createPokeCard(pokemon);
 }
 
-const createPokeCard = (data) => {
-    let card = `
-    <h5 class="card-title numero" id="numero">${data.id}</h5>
+getPokemon();
+
+const createPokeCard = (pokemon) => {
+                
+    const pokemonCard = pokemon
+        .map(
+            pokemon =>
+                `
+                <div class="card btn" data-toggle="modal" data-target="#exampleModal" onclick="selectPokemon(${pokemon.id});" id="${pokemon.id}">
+                 <h5 class="card-title numero" id="numero">${pokemon.id}</h5>
                 <div class="pokemon">
-                <img class="card-img-top" id="image" src="${data.sprites.front_default}" alt="${data.name}">
+                <img class="pokemon" src="${pokemon.image}"/>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title name" id="name">${data.name}</h5>
-                    <p class="card-text abilities">${data.abilities[0].ability.name}</p>
-                </div>
-                `
-    let pokemonCard = document.createElement("div")
-    pokemonCard.classList.add("card")
-    pokemonCard.classList.add("btn")
-    pokemonCard.setAttribute("data-toggle", "modal")
-    pokemonCard.setAttribute("data-target", `#${data.id}`)
-    pokemonCard.innerHTML = card;
-    document.getElementById("pokemon-container").appendChild(pokemonCard)
+                    <h5 class="card-title name" id="name">${pokemon.name}</h5>
+                    
+                </div> 
+                </div>`
+        )
+        .join("");
+    pokedex.innerHTML = pokemonCard
 }
 
-const createModal = (data) => {
-    let modal = `
+const selectPokemon = async id => {
+    console.log(id)
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const res = await fetch(url);
+    const pokemon = await res.json();
+    document.getElementById("pokemon-title").textContent = pokemon.name
+    document.getElementById("pokemon-image").src = `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`
+    document.getElementById("nome").textContent = pokemon.name
+    document.getElementById("habilidade") = data.abilities.map(pokemon => pokemon.ability.name)
+  };
+
+const createModal = data => {
+    const modal = `
     <div class="modal fade" id="${data.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content" >
@@ -59,18 +75,8 @@ const createModal = (data) => {
   </div>  
 </div>
     `
-    
-    let pokemonModal = document.createElement("div")
-    pokemonModal.innerHTML = modal;
-    document.getElementById("pokemon-container").appendChild(pokemonModal)
+    pokedex.innerHTML = modal + pokedex.innerHTML
 }
-
-const showPokemons = async () => {
-    for (let i = 3; i <= NumberOfPokemons; i++) {
-        await getPokemon(i)
-    }
-}
-showPokemons()
 
 
 

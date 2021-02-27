@@ -30,7 +30,32 @@
     <button id="botaoLogoff" onclick="logoffApi()">Logoff</button>
     <button id="botaoLogIn" onclick="redirectLogin()">Log in</button>
     <div class="row">
-        
+  
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content" >
+                <div class="modal-header">
+                  <h5 class="modal-title" id="pokemon-title"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <div style="display:inline-block;vertical-align:top;">
+                <img id="pokemon-image" width="200px" height="200px"/>
+                </div>
+                <div style="display:inline-block;">
+                <p><b id="nome"></b></p>
+                <p><b id="habilidade">Habilidades:</b></p>
+                <p><b>Tipos:</b> ${data.types.map(pokemon => pokemon.type.name)} </p>
+                <p><b>Altura:</b> ${data.height} </p>
+                <p><b>Peso:</b> </p>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
         <div class="pokemon-container mt-5" id="pokemon-container">
         
         </div>

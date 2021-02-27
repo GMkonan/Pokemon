@@ -3,6 +3,8 @@ let token = window.localStorage.getItem("Token")
 
 if(token == null) {
     objetoBotaoLogoff.className = "noLogoffButton"
+} else {
+    
 }
 
 const redirectLogin = () => {
