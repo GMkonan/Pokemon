@@ -2,69 +2,79 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="d-flex justify-content-center">
-        <div class="row">
-            <div class="col-sm">
-
-            </div>
-            <div class="col-sm">
-                <img src="./images/pokedex.png" />
-            </div>
-            <div class="col-sm">
-            </div>
-        </div>
-    </div>
-    
-    <input type="text" id="myInput" onkeyup="searchBar()" placeholder="Search for pokemons" title="Type in a name">
-    <button id="botaoLogoff" onclick="logoffApi()">Logoff</button>
-    <button id="botaoLogIn" onclick="redirectLogin()">Log in</button>
+  <div class="d-flex justify-content-center">
     <div class="row">
-  
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content" >
-                <div class="modal-header">
-                  <h5 class="modal-title" id="pokemon-title"></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                <div style="display:inline-block;vertical-align:top;">
-                <img id="pokemon-image" width="200px" height="200px"/>
-                </div>
-                <div style="display:inline-block;">
-                <p><b id="nome"></b></p>
-                <p><b id="habilidade">Habilidades:</b></p>
-                <p><b>Tipos:</b> ${data.types.map(pokemon => pokemon.type.name)} </p>
-                <p><b>Altura:</b> ${data.height} </p>
-                <p><b>Peso:</b> </p>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>  
-        </div>
-        <div class="pokemon-container mt-5" id="pokemon-container">
-        
-        </div>
+
+      <div class="col-sm">
+      </div>
+      <div class="col-sm">
+        <img src="./images/pokedex.png" />
+      </div>
+      <div class="col-sm">
+
+      </div>
     </div>
-    <button id="loadmore">Load More...</button>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="pokemonApi.js" async defer></script>
-    <script src="index.js" async defer></script>
+  </div>
+
+  <input type="text" id="myInput" onkeyup="searchBar()" placeholder="Search for pokemons" title="Type in a name">
+  <div class="row">
+    <div class="col-sm">
+      <button id="botaoLogoff" style="margin-top: 1rem;" class="btn btn-primary" onclick="logoffApi()">Logoff</button>
+      <button id="botaoLogIn" style="margin-top: 1rem;" class="btn btn-primary" onclick="redirectLogin()">Log in</button>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 1rem;">
+    <h4 id="trainerName"></h4>
+  </div>
+  <div class="row">
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pokemon-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div style="display:inline-block;vertical-align:top;">
+              <img id="pokemon-image" width="200px" height="200px" />
+            </div>
+            <div style="display:inline-block;">
+              <p id="nome"></p>
+              <p id="habilidades"></p>
+              <p id="tipos"></p>
+              <p id="altura"></p>
+              <p id="peso"></p>
+              <p id="stats"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pokemon-container mt-5" id="pokemon-container">
+
+    </div>
+  </div>
+  <button id="loadmore" class="btn btn-primary">Load More...</button>
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="pokemonApi.js" async defer></script>
+  <script src="index.js" async defer></script>
 </body>
 
 </html>

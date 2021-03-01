@@ -43,8 +43,14 @@ const selectPokemon = async id => {
     const pokemon = await res.json();
     document.getElementById("pokemon-title").textContent = pokemon.name
     document.getElementById("pokemon-image").src = `https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`
-    document.getElementById("nome").textContent = pokemon.name
-    document.getElementById("habilidade") = data.abilities.map(pokemon => pokemon.ability.name)
+    document.getElementById("nome").innerHTML = `<b>Nome:</b> ${pokemon.name}`
+    document.getElementById("habilidades").innerHTML = `<b>Habilidades:</b> ${pokemon.abilities.map(pokemon => pokemon.ability.name)}`
+    document.getElementById("tipos").innerHTML = `<b>Tipos:</b> ${pokemon.types.map(pokemon => pokemon.type.name)}`
+    document.getElementById("altura").innerHTML = `<b>Altura:</b> ${pokemon.height}`
+    document.getElementById("peso").innerHTML = `<b>Peso:</b> ${pokemon.weight}`
+    console.log(pokemon.stats.map(stat => stat))
+    document.getElementById("stats").innerHTML = 
+    `${pokemon.stats.map(stat => "<b>" + stat.stat.name + "</b>" + ": " + stat.base_stat + " \n").join("")}`
   };
 
 const createModal = data => {
