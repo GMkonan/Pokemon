@@ -1,4 +1,5 @@
 var objetoBotaoLogoff = document.getElementById("botaoLogoff")
+
 let token = window.localStorage.getItem("Token")
 console.log(token)
 if(token == null) {
@@ -27,6 +28,33 @@ if(token == null) {
         }
     }
     });
+}
+
+const adicionarPokemon = () => {
+    let pokemonNome = document.getElementById("nome").innerHTML
+    pokemonNome = pokemonNome.substring(pokemonNome.indexOf("< ")+ 1);
+    let pokemonAltura = document.getElementById("altura").innerHTML
+    pokemonAltura = pokemonAltura.substring(pokemonAltura.indexOf("< ")+ 1);
+    console.log(pokemonAltura)
+    $.ajax({
+        url: "https://escolarapp2.herokuapp.com/pokemons/",
+        contentType: 'application/json',
+        cache: false,
+        method: 'POST',
+        dataType: 'json',
+        headers: {"Authorization": window.localStorage.getItem('Token')},
+        
+        data: JSON.stringify({nome_pokemon: pokemonNome, idade: "1", tamanho: Number(pokemonAltura)}),
+        success: function(objeto){
+            console.log(objeto)
+
+
+        },
+        error: function (error){
+            console.log(error)
+        }
+    });
+
 }
 
 const redirectLogin = () => {

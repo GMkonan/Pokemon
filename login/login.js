@@ -22,7 +22,7 @@ const logar = () => {
         success: function(objetoToken){
             console.log(objetoToken)
 
-            window.localStorage.setItem("Token", objetoToken.key)
+            window.localStorage.setItem("Token", "Token " + objetoToken.key)
 
             let token = window.localStorage.getItem("Token")
 
