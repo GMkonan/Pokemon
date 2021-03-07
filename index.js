@@ -6,35 +6,34 @@ if(token == null) {
     objetoBotaoLogoff.className = "noLogoffButton"
 } else {
     botaoLogIn.className = "noLogoffButton"
-    
-    $.ajax
+    requisicaoNome();
+}
+
+async function requisicaoNome() {
+    await $.ajax
     ({
     type: "GET",
     url: "https://escolarapp2.herokuapp.com/account/user/",
     dataType: 'json',
-    headers: {
-        "Authorization": "Basic " + btoa("guilherme@hotmail.com" + ":" + "12345")
-    },
-    data: '{ "comment" }',
+    headers: {"Authorization": window.localStorage.getItem('Token')},
     success: function (data){
         if(data.username == null) {
         let username = data.email
         username = username.substring(username.indexOf("@") , username.lenght + 1);
         console.log(username)
-        document.getElementById("trainerName").innerHTML = username.toUpperCase()
+        document.getElementById("trainerName").innerHTML = username.toUpperCase() + "'S POKEDEX"
         } else {
             let username = data.username
-            document.getElementById("trainerName").innerHTML = username.toUpperCase()
+            document.getElementById("trainerName").innerHTML = username.toUpperCase() + "'S POKEDEX"
         }
     }
     });
 }
 
 const adicionarPokemon = () => {
-    let pokemonNome = document.getElementById("nome").innerHTML
-    pokemonNome = pokemonNome.substring(pokemonNome.indexOf("< ")+ 1);
-    let pokemonAltura = document.getElementById("altura").innerHTML
-    pokemonAltura = pokemonAltura.substring(pokemonAltura.indexOf("< ")+ 1);
+    let pokemonNome = document.getElementById("nome").childNodes[1].textContent.trim()
+    let pokemonAltura = document.getElementById("altura").childNodes[1].textContent.trim()
+    console.log(pokemonNome)
     console.log(pokemonAltura)
     $.ajax({
         url: "https://escolarapp2.herokuapp.com/pokemons/",
